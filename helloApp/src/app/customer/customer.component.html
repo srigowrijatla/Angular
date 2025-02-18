@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+<h2>Customers</h2>
+<table border="1" cellpadding="7" cellspacing="7">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let customer of customers">
+            <td>{{customer.id}}</td>
+            <td>{{customer.name}}</td>
+            <td>{{customer.email}}</td>
+            <td>{{customer.phone}}</td>
+            <td>{{customer.address}}</td>
+            <td>
+                <button>Edit</button>&nbsp;
+                <button (click)="doCopy(customer.id)">Copy</button>&nbsp;
+                <button (click)="doDelete(customer.id)">Delete</button>&nbsp;
+            </td>
+        </tr>
+    </tbody>
+  </table>

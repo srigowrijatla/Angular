@@ -1,0 +1,9 @@
+<h1>LoginPage</h1>
+<div>
+	<form>
+		<input type="text" placeholder="username" [(ngModel)]="user.username"  ng-model-options="{ updateOn: 'blur' }" name=""  [ngModelOptions]="{standalone: true}"><br><br>
+		<input type="password" name="" [(ngModel)]="user.password" placeholder="password" [ngModelOptions]="{standalone: true}"><br><br>
+		<input type="button" name="" value="login" 
+		(click)="doLogin()">
+	</form>
+</div>
