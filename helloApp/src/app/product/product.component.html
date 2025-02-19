@@ -1,0 +1,42 @@
+<app-menu></app-menu>
+<h1>Products</h1>
+<table border="1" cellpadding="7" cellspacing="7">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Country</th>
+            <th>To</th>
+            <th>From</th>
+            <th>Actions</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.type}}</td>
+            <td>{{product.country}}</td>
+            <td>{{product.to}}</td>
+            <td>{{product.from}}</td>
+            <td>
+                <button (click)="doEdit(product.id)" >Edit</button>&nbsp;
+                <button (click)="doCopy(product.id)">Copy</button>&nbsp;
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <h1>Adding Products</h1>
+  <form>
+    <input name="name" placeholder="name" [(ngModel)]="product.name" ><br><br>
+    <input name="type" placeholder="type" [(ngModel)]="product.type" ><br><br>
+    <input name="country" placeholder="country" [(ngModel)]="product.country" ><br><br>
+    <input name="to" placeholder="to" [(ngModel)]="product.to" ><br><br>
+    <!-- <input name="from" placeholder="from" [(ngModel)]="product.from" ><br><br> -->
+    <input type="button" name="" value="AddProduct" (click)="addProduct()" ><br><br>
+   
+    <input type="button" name="" value="{{addButtonLabel}}" (click)="addUpdateProduct()"><br><br>
+</form>

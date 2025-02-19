@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AboutComponent } from './about/about.component';
+import { ProductComponent } from './product/product.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,4 +14,6 @@ export const routes: Routes = [
   { path: 'customer', component: CustomerComponent },
   { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
+  { path: '', redirectTo: 'product', pathMatch: 'full' },
+  { path: 'product', component: ProductComponent },
 ];

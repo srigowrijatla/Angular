@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <h2>Customers</h2>
-<table border="1" cellpadding="7" cellspacing="7">
+<!-- <table border="1" cellpadding="7" cellspacing="7">
     <thead>
         <tr>
             <th>#</th>
@@ -19,10 +19,114 @@
             <td>{{customer.phone}}</td>
             <td>{{customer.address}}</td>
             <td>
-                <button>Edit</button>&nbsp;
-                <button (click)="doCopy(customer.id)">Copy</button>&nbsp;
-                <button (click)="doDelete(customer.id)">Delete</button>&nbsp;
+                <button mat-button (click)="doEdit(customer.id)">Edit</button>&nbsp;
+                <button mat-button (click)="doCopy(customer.id)">Copy</button>&nbsp;
+                <button mat-button (click)="doDelete(customer.id)">Delete</button>&nbsp;
             </td>
         </tr>
     </tbody>
-  </table>
+  </table> -->
+<br /><br />
+<h1>Adding customer</h1>
+<form>
+  <input
+    name="name"
+    placeholder="name"
+    [(ngModel)]="customer.name"
+  /><br /><br />
+  <input
+    name="email"
+    placeholder="email"
+    [(ngModel)]="customer.email"
+  /><br /><br />
+  <input
+    name="phone"
+    placeholder="phone"
+    [(ngModel)]="customer.phone"
+  /><br /><br />
+  <input
+    name="address"
+    placeholder="address"
+    [(ngModel)]="customer.address"
+  /><br /><br />
+  <!-- <input type="date" name="DOB" [(ngModel)]="customer.DOB" /><br /><br /> -->
+  <!-- <input type="button" name="" value="Addcustomer" (click)="addCustomer()" ><br><br> -->
+
+  <input
+    type="button"
+    name=""
+    value="{{ addButtonLabel }}"
+    (click)="addUpdateCustomer()"
+  /><br /><br />
+</form>
+<!-- <form>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput name="name" placeholder="Name" [(ngModel)]="customer.name" />
+      </mat-form-field><br /><br />
+</form> -->
+
+
+<table mat-table [dataSource]="customers" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef>Phone</th>
+    <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+  </ng-container>
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef>Address</th>
+    <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+  </ng-container>
+  <ng-container matColumnDef="DOB">
+    <th mat-header-cell *matHeaderCellDef>DOB</th>
+    <!-- <td mat-cell *matCellDef="let element">
+      {{ element.DOB | date : "dd-mm-yyyy" }}
+    </td> -->
+    <td mat-cell *matCellDef="let element">
+        {{ element.DOB | date: 'dd/MM/yyyy' }}
+      </td>
+      
+  </ng-container>
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef>Edit</th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="doEdit(element.id)">Edit</button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="copy">
+    <th mat-header-cell *matHeaderCellDef>Copy</th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="doCopy(element.id)">Copy</button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef>Delete</th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="doDelete(element.id)">Delete</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
