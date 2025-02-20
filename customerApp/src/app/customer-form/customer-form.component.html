@@ -1,0 +1,14 @@
+<p>customer-form works!</p>
+SelectId: {{selectId}}
+<form>
+    <input name="name" placeholder="Name" [(ngModel)]="customer.name" > <br/><br/> 
+    <input name="email" placeholder="Email" [(ngModel)]="customer.email"> <br/><br/> 
+    <input name="phone" placeholder="Phone" [(ngModel)]="customer.phone"> <br/><br/> 
+    <input name="address" placeholder="Address" [(ngModel)]="customer.address"> <br/><br/> 
+    <input type="button" name="" value="{{addButtonLabel}}" (click)="addUpdateCustomer()">&nbsp;&nbsp;
+    <input type="button" name="" value="Cancel" (click)="cancel()"><br><br>
+    <!-- <input type="button" value={{addLabel}} (click)="addCustomer()" > &nbsp;&nbsp; 
+    <input type="button" value="Cancel" (click)="resetCustomer()" > <br/><br/>  -->
+</form>
+
+<!-- <button (click)="updateRequested('Rama')"> update Parent</button> -->

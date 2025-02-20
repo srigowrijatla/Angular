@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
-import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Customer } from '../models/customer';
@@ -8,16 +7,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
-import { DatePipe } from '@angular/common';
+import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import {MatInputModule} from '@angular/material/input';
+import {DatePipe} from '@angular/common';
+
 
 
 @Component({
   selector: 'app-customer',
+  providers: [provideNativeDateAdapter()],
   imports: [
     MenuComponent,
-    NgFor,
     FormsModule,
     MatButtonModule,
     MatCheckboxModule,
@@ -25,7 +26,7 @@ import { MatInputModule } from '@angular/material/input';
     MatTableModule,
     DatePipe,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   templateUrl: './customer.component.html',
   styleUrl: './customer.component.css',
@@ -37,7 +38,7 @@ export class CustomerComponent {
     'email',
     'phone',
     'address',
-    'DOB',
+    'dob',
     'edit',
     'copy',
     'delete',
@@ -49,7 +50,7 @@ export class CustomerComponent {
       email: 'vivek@abc.com',
       phone: '2356422433',
       address: 'India',
-      DOB: new Date('1990,11,16'),
+      dob: new Date('1990,11,16'),
     },
     {
       id: 2,
@@ -57,7 +58,7 @@ export class CustomerComponent {
       email: 'pari@abc.com',
       phone: '28896422433',
       address: 'India',
-      DOB: new Date('1991,12,17'),
+      dob: new Date('1991,12,17'),
     },
     {
       id: 3,
@@ -65,7 +66,7 @@ export class CustomerComponent {
       email: 'samar@abc.com',
       phone: '2889rr22433',
       address: 'India',
-      DOB: new Date('1992,10,18'),
+      dob: new Date('1992,10,18'),
     },
     {
       id: 4,
@@ -73,7 +74,7 @@ export class CustomerComponent {
       email: 'vishal@abc.com',
       phone: '28899822433',
       address: 'India',
-      DOB: new Date('1993,5,19'),
+      dob: new Date('1993,5,19'),
     },
   ];
   customer: Customer = {
@@ -82,7 +83,7 @@ export class CustomerComponent {
     email: '',
     phone: '',
     address: '',
-    DOB: new Date(''),
+    dob: new Date(''),
   };
   addButtonLabel: string = 'Add';
 
@@ -114,7 +115,7 @@ export class CustomerComponent {
       email: '',
       phone: '',
       address: '',
-      DOB: new Date(''),
+      dob: new Date(''),
     };
   }
   addCustomer() {
@@ -142,7 +143,7 @@ export class CustomerComponent {
       customer.email = this.customer.email;
       customer.phone = this.customer.phone;
       customer.address = this.customer.address;
-      customer.DOB = this.customer.DOB;
+      customer.dob = this.customer.dob;
     }
     this.resetForm();
   }

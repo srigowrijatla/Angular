@@ -1,0 +1,167 @@
+<app-menu></app-menu> <br /><br />
+<h1>Products</h1>
+
+<form>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      name="name"
+      placeholder="name"
+      [(ngModel)]="product.name"
+    /><br /><br /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>Type</mat-label>
+    <input
+      matInput
+      name="type"
+      placeholder="type"
+      [(ngModel)]="product.type"
+    /><br /><br /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>Country</mat-label>
+    <input
+      matInput
+      name="country"
+      placeholder="country"
+      [(ngModel)]="product.country"
+    /><br /><br /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>To</mat-label>
+    <input
+      matInput
+      name="to"
+      placeholder="to"
+      [(ngModel)]="product.to"
+    /><br /><br /> </mat-form-field
+  ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>From</mat-label>
+    <input
+      matInput
+      name="from"
+      placeholder="from"
+      [(ngModel)]="product.from"
+    /><br /><br /> </mat-form-field
+  ><br />
+  <!-- <button mat-stroked-button (click)="addProduct()">AddProduct</button> <br /> -->
+  <button mat-flat-button (click)="addUpdateProduct()">
+    {{ addButtonLabel }}
+  </button>
+  <br />
+</form>
+
+<h1>Products</h1>
+<!-- <table border="1" cellpadding="7" cellspacing="7">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Country</th>
+            <th>To</th>
+            <th>From</th>
+            <th>Actions</th>
+          </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.type}}</td>
+            <td>{{product.country}}</td>
+            <td>{{product.to}}</td>
+            <td>{{product.from}}</td>
+            <td>
+                <button (click)="doEdit(product.id)" >Edit</button>&nbsp;
+                <button (click)="doCopy(product.id)">Copy</button>&nbsp;
+                
+            </td>
+        </tr>
+    </tbody>
+  </table> -->
+<table mat-table [dataSource]="products" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Type</th>
+    <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="country">
+    <th mat-header-cell *matHeaderCellDef>Country</th>
+    <td mat-cell *matCellDef="let element">{{ element.country }}</td>
+  </ng-container>
+  <ng-container matColumnDef="to">
+    <th mat-header-cell *matHeaderCellDef>To</th>
+    <td mat-cell *matCellDef="let element">{{ element.to }}</td>
+  </ng-container>
+  <ng-container matColumnDef="from">
+    <th mat-header-cell *matHeaderCellDef>From</th>
+    <td mat-cell *matCellDef="let element">{{ element.from }}</td>
+  </ng-container>
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef>Edit</th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="doEdit(element.id)">Edit</button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="copy">
+    <th mat-header-cell *matHeaderCellDef>Copy</th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="doCopy(element.id)">Copy</button>
+    </td>
+  </ng-container>
+  <!-- <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element"> <button  (click)="doDelete(element.id)" > Delete</button></td>
+      </ng-container> -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<br /><br />
+<h1>Adding Products</h1>
+<!-- <form>
+    <input name="name" placeholder="name" [(ngModel)]="product.name" ><br><br>
+    <input name="type" placeholder="type" [(ngModel)]="product.type" ><br><br>
+    <input name="country" placeholder="country" [(ngModel)]="product.country" ><br><br>
+    <input name="to" placeholder="to" [(ngModel)]="product.to" ><br><br>
+    <input name="from" placeholder="from" [(ngModel)]="product.from" ><br><br>
+    <input type="button" name="" value="AddProduct" (click)="addProduct()" ><br><br>
+   
+    <input type="button" name="" value="{{addButtonLabel}}" (click)="addUpdateProduct()"><br><br>
+</form> -->
+
+<button
+  (click)="selectProductId = product.id"
+  class="btn btn-info"
+  style="margin-left: 10px"
+>
+  Select
+</button>
+<app-product-form
+  [selectId]="selectProductId"
+  [product]="product"
+  (doUpdate)="updateProduct($event)"
+  [product]="product"
+  (doUpdate)="updateProduct($event)"
+></app-product-form>
