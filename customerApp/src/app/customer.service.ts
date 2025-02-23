@@ -40,4 +40,15 @@ export class CustomerService {
     customer.id = this.getNextId()
     this.customers = [customer, ...this.customers]
   }
+  updateCustomer(customer:Customer){
+    this.customers = this.customers.map((rec)=>{
+      if(rec.id === customer.id){
+        return customer;
+      }
+      return rec;
+    });
+  }
+  deleteCustomer(customer:Customer){
+    this.customers = this.customers.filter((rec)=>(rec.id != customer.id));
+  }
 }
