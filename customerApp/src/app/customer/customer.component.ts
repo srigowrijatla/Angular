@@ -20,7 +20,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DatePipe } from '@angular/common';
 import { CustomerFormComponent } from '../customer-form/customer-form.component';
-import { CustomerService } from '../CustomerAPI.Service';
+import { CustomerService } from '../customerAPI.service';
 
 @Component({
   selector: 'app-customer',
@@ -52,7 +52,7 @@ export class CustomerComponent implements OnInit {
   constructor(
     private router: Router,
     private customerService: CustomerService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
   ) {
     this.loadRecords();
   }
@@ -88,6 +88,17 @@ export class CustomerComponent implements OnInit {
   // ];
   // in customer.component.ts
 
+  gotoAddCustomer(){
+    this.router.navigate(['/customer/add']);
+  }
+  
+  doCancel(){
+    // this.router.navigate(['/customer']);
+    // this.customer =  {
+    //   id:0, name:'',email:'',phone:'',address:'',dob:null
+    // }
+    // this.addButtonLabel = "Add";
+  }
   doDelete(id: number) {
     let c = new Customer();
     c.id = id;
@@ -138,10 +149,11 @@ export class CustomerComponent implements OnInit {
       dob: null,
     };
   };
-  doEdit(id: any) {
-    this.addButtonLabel = 'Update';
-    let [customer] = this.getCustomerById(id);
-    this.customer = { ...customer };
+  doEdit(id:any){
+    this.router.navigate([`/customer/edit/${id}`]);
+    // this.addButtonLabel = "Update";
+    // let [customer] = this.getCustomerById(id);
+    // this.customer = {...customer};
   }
   addUpdateCustomer() {
     if (this.customer.id == 0) {
@@ -158,6 +170,7 @@ export class CustomerComponent implements OnInit {
     } else {
       this.customerService.updateCustomer(this.customer).subscribe((rec) => {
         this.loadRecords();
+        this.doCancel();
       });
       // this.customerService.updateCustomer(this.customer);
       // let [customer] = this.customers.filter((cus:Customer)=>(cus.id==this.customer.id));

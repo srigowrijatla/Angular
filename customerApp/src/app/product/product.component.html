@@ -1,6 +1,7 @@
 <app-menu></app-menu> <br /><br />
 <h1>Products</h1>
 
+<input type="button" (click)="gotoAddProduct()" value="Add"/> <br/><br/>
 <form>
   <mat-form-field appearance="outline">
     <mat-label>Name</mat-label>
@@ -165,5 +166,6 @@
   [product]="product"
   (doUpdate)="updateProduct($event)"
   [product]="product"
+  (doCancel)=doCancel()
   (doUpdate)="updateProduct($event)"
 ></app-product-form>

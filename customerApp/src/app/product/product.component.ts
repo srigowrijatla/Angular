@@ -71,6 +71,11 @@ export class ProductComponent {
     from: '',
   };
   addButtonLabel = 'Add';
+  doCancel(){
+  }
+  gotoAddProduct(){
+    this.router.navigate(['/product/add']);
+  }
   getproductById(id: number) {
     return this.products.filter((cus: Product) => cus.id == id);
   }
@@ -86,9 +91,10 @@ export class ProductComponent {
   }
 
   doEdit(id: number) {
-    this.addButtonLabel = 'Update';
-    let [product] = this.getproductById(id);
-    this.product = { ...product };
+    this.router.navigate([`/product/edit/${id}`]);
+    // this.addButtonLabel = 'Update';
+    // let [product] = this.getproductById(id);
+    // this.product = { ...product };
   }
   addUpdateProduct() {
     if (this.product.id == 0) {

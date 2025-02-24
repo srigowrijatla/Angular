@@ -1,0 +1,5 @@
+<app-menu></app-menu>
+<h2>{{heading}}</h2>
+<hr>
+
+<app-product-form [product]="product" (doCancel)=doCancel()  (doUpdate)=updateProduct($event)></app-product-form>

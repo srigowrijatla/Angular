@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <h2>Customers</h2>
-
+<input type="button" (click)="gotoAddCustomer()" value="Add"/> <br/><br/>
 <!-- <app-customer-form [selectId]="selectCustomerId" (doUpdate)=updateCustomer($event)></app-customer-form> -->
 <form>
     <mat-form-field appearance="outline">
@@ -85,4 +85,4 @@
   [selectId]="selectCustomerId" 
   [customer]="customer"
   (doUpdate)=updateCustomer($event)
-  [customer]="customer"  (doUpdate)=updateCustomer($event)></app-customer-form>
+  [customer]="customer" (doCancel)=doCancel() (doUpdate)=updateCustomer($event)></app-customer-form>

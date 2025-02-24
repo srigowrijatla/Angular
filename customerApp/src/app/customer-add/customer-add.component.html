@@ -1,0 +1,5 @@
+<app-menu></app-menu>
+<h2>{{heading}}</h2>
+<hr>
+
+<app-customer-form [customer]="customer" (doCancel)=doCancel() (doUpdate)=updateCustomer($event)></app-customer-form>

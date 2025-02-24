@@ -162,22 +162,22 @@ app.use(cors());
 // };
 
 getNextId = () => {
-    if (customers.length === 0) {
-      return 1;
-    }
-    const list = customers.map(({ id }) => id);
-    let max = Math.max(...list);
-    return max + 1;
-  };
+  if (customers.length === 0) {
+    return 1;
+  }
+  const list = customers.map(({ id }) => id);
+  let max = Math.max(...list);
+  return max + 1;
+};
 
-  getNextById = () => {
-    if (products.length === 0) {
-      return 1;
-    }
-    const list = products.map(({ id }) => id);
-    let max = Math.max(...list);
-    return max + 1;
-  };
+getNextById = () => {
+  if (products.length === 0) {
+    return 1;
+  }
+  const list = products.map(({ id }) => id);
+  let max = Math.max(...list);
+  return max + 1;
+};
 let customers = [
   {
     id: 1,
@@ -316,7 +316,7 @@ app.get(customerAPI + "/:id", function (req, res) {
 });
 
 app.post(customerAPI, function (req, res) {
-	console.log("customerAPI::", req.body);
+  console.log("customerAPI::", req.body);
   req.body.id = getNextId(customers);
   customers.push(req.body);
   res.send({ result: "ok", msg: "customer added ok" });
