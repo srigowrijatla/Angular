@@ -1,3 +1,5 @@
 <app-menu></app-menu>
 <p>about works!</p>
 <h2>{{name}}</h2>
+<input type="text" placeholder="Enter message" #message>
+<button type="button" (click)="setMessage(message)" >Send message</button>
