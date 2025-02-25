@@ -48,6 +48,12 @@
       [(ngModel)]="product.from"
     /><br /><br /> </mat-form-field
   ><br />
+  <mat-form-field appearance="outline">
+    <mat-label>Manufacturing Date</mat-label>
+    <input name="mgDate" matInput [matDatepicker]="picker" [(ngModel)]="product.mgDate">
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>&nbsp;
+  <button mat-stroked-button (click)="picker.open()">Open</button> <br/>
   <!-- <button mat-stroked-button (click)="addProduct()">AddProduct</button> <br /> -->
   <button mat-flat-button (click)="addUpdateProduct()">
     {{ addButtonLabel }}
@@ -118,6 +124,10 @@
   <ng-container matColumnDef="from">
     <th mat-header-cell *matHeaderCellDef>From</th>
     <td mat-cell *matCellDef="let element">{{ element.from }}</td>
+  </ng-container>
+  <ng-container matColumnDef="mgDate">
+    <th mat-header-cell *matHeaderCellDef>Manufacturing Date</th>
+    <td mat-cell *matCellDef="let element"> {{element.mgDate|date}} </td>
   </ng-container>
   <ng-container matColumnDef="edit">
     <th mat-header-cell *matHeaderCellDef>Edit</th>

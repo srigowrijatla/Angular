@@ -38,7 +38,7 @@ export class ProductAddComponent implements  OnInit{
         this.product = product;
       })
     }else{
-      this.heading = "Add Customer"
+      this.heading = "Add Product"
     }
   }
   ngOnInit(){
@@ -46,7 +46,7 @@ export class ProductAddComponent implements  OnInit{
     this.loadProduct();
   }
 
-  product:Product = { id: 0, name: '', type: '', country: '', to: '', from: '' };
+  product:Product = { id: 0, name: '', type: '', country: '', to: '', from: '',mgDate:new Date('19-11-2025') };
    doCancel(){
     this.router.navigate(['/product']);
    }

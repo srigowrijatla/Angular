@@ -2,11 +2,13 @@ import { Component, OnInit,Input,Output, EventEmitter,SimpleChanges,OnChanges } 
 import { FormsModule } from '@angular/forms';
 import { Product } from '../models/product';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @Component({
   selector: 'app-product-form',
-  imports: [FormsModule],
+  imports: [FormsModule,DatePipe,MatDatepickerModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -14,7 +16,7 @@ export class ProductFormComponent implements OnInit,OnChanges {
   constructor(private router:Router) { }
     addButtonLabel = "Add";
     @Input() selectId: number = 0;
-    @Input() product:Product =  {id:0, name:'',type:'',country:'',to:'',from:''}
+    @Input() product:Product =  {id:0, name:'',type:'',country:'',to:'',from:'',mgDate:new Date('19-11-2025')}
     @Output() doUpdate = new EventEmitter<Product>();
     @Output() doCancel = new EventEmitter();
   
@@ -27,6 +29,7 @@ export class ProductFormComponent implements OnInit,OnChanges {
     addUpdateProduct(){
       let customer = {...this.product};
       this.doUpdate.emit(customer);
+      this.selectId=this.product.id;
   
     }
     ngOnChanges(changes: SimpleChanges) {

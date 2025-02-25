@@ -5,4 +5,5 @@ export class Product {
   country: string = '';
   to: string = '';
   from: string = '';
+  mgDate?: Date|null  = new Date();
 }

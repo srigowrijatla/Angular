@@ -17,6 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { ProductService } from '../productAPI.service';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -31,6 +33,8 @@ import { ProductService } from '../productAPI.service';
     MatButtonModule,
     MatCheckboxModule,
     MatTableModule,
+    MatDatepickerModule,
+    DatePipe,
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
@@ -57,6 +61,7 @@ export class ProductComponent {
     'country',
     'to',
     'from',
+    'mgDate',
     'edit',
     'copy',
     'delete',
@@ -69,11 +74,11 @@ export class ProductComponent {
     country: '',
     to: '',
     from: '',
+    mgDate: new Date('12-4-1998'),
   };
   addButtonLabel = 'Add';
-  doCancel(){
-  }
-  gotoAddProduct(){
+  doCancel() {}
+  gotoAddProduct() {
     this.router.navigate(['/product/add']);
   }
   getproductById(id: number) {
@@ -87,7 +92,15 @@ export class ProductComponent {
     });
   }
   resetForm() {
-    this.product = { id: 0, name: '', type: '', country: '', to: '', from: '' };
+    this.product = {
+      id: 0,
+      name: '',
+      type: '',
+      country: '',
+      to: '',
+      from: '',
+      mgDate: new Date('12-4-1998'),
+    };
   }
 
   doEdit(id: number) {

@@ -1,10 +1,12 @@
 <p>product-form works!</p>
-SelectId: {{selectId}}
+<!-- SelectId: {{selectId}} -->
 <form>
     <input name="name" placeholder="name" [(ngModel)]="product.name" ><br><br>
     <input name="type" placeholder="type" [(ngModel)]="product.type" ><br><br>
     <input name="country" placeholder="country" [(ngModel)]="product.country" ><br><br>
     <input name="to" placeholder="to" [(ngModel)]="product.to" ><br><br>
+    <input name="from" placeholder="from" [(ngModel)]="product.from" ><br><br>
+    <input type="date" name="mgDate" placeholder="mgDate" [(ngModel)]="product.mgDate" ><br><br>
     <input type="button" name="" value="{{addButtonLabel}}" (click)="addUpdateProduct()">&nbsp;&nbsp;
     <input type="button" name="" value="Cancel" (click)="cancel()"><br><br>
     <!-- <input type="button" value={{addLabel}} (click)="addCustomer()" > &nbsp;&nbsp; 
