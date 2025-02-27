@@ -18,9 +18,9 @@ export class AppComponent {
   constructor(public messageService: MessageService) {}
   title: any = 'Customer App';
   ngOnInit() {
-    this.subscription = this.messageService.message.subscribe((message) => {
-      this.message = message;
-    });
+    // this.subscription = this.messageService.message.subscribe((message) => {
+    //   this.message = message;
+    // });
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
